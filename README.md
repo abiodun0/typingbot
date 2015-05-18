@@ -1,9 +1,13 @@
 Bootcamp Ruby Project
 ================
 
-## Baby Steps
+## Prerequisites
 
-- Run `rackup -p 4567` to start the app
+- `gem install bundler`
+
+## Run the app
+
+- Run `rackup -p 4567`
 
 ## Test
 
