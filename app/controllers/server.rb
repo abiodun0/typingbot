@@ -1,5 +1,4 @@
 require 'sinatra/base'
-# require 'User'
 
 class Server < Sinatra::Base
 
