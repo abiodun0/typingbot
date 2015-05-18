@@ -4,6 +4,7 @@ Bootcamp Ruby Project
 ## Prerequisites
 
 - `gem install bundler`
+- `bundle install`
 
 ## Run the app
 
