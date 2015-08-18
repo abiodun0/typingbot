@@ -1,0 +1,32 @@
+%html>
+  %head
+    %title Simple TypingBot App
+    %meta{:charset => "utf-8"}
+    %link{:href => "/css/bootstrap.min.css", :rel => "stylesheet" }
+    %link{:href => "/css/style.css", :rel=>"stylesheet"}
+    %script{:src =>"http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"}
+  %body 
+    = yield 
+    .container
+      .row
+        .col-md-12
+          %h4{:style=>'text-align:center;margin-top:40px'} Leader Boards
+          .table-responsive
+            %table{:id =>"mytable",:class => "table table-bordred table-striped"}
+              %thead
+                %th User Name
+                %th CPM
+                %th WPM
+                %th Total Scores
+                     
+              %tbody>
+                - loadusers.each do |player|
+                  %tr
+                  %td= player[:user_name]
+                  %td= player[:CPM]
+                  %td= player[:WPM]
+                  %td= player[:total_score]
+    
+ 
+    %script{:src =>"/js/bootstrap.min.js"}
+    %script{:src =>"/js/main.js"}
