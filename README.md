@@ -1,4 +1,4 @@
-Bootcamp Ruby Project
+TypingBot Ruby Project
 ================
 
 ## Prerequisites
