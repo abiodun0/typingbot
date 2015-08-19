@@ -6,7 +6,9 @@ require 'bcrypt'
 require 'rack-flash'
 require 'json'
 
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/typing_speed.db")
+#DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/typing_speed.db")
+DataMapper.setup(:default, 'postgres://gxgijptioiskir:WBTHWR4S7yUdH8OXC-zkiY6B6W@ec2-54-197-255-248.compute-1.amazonaws.com:5432/d91dbf6qmcnjp6')
+
 class Server < Sinatra::Base
   use Rack::Flash
      get '/' do

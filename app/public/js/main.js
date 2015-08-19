@@ -237,7 +237,7 @@ function thingWithWords($arg) {
             	success: function(status){
             		console.log(status);
             		if(status == "success"){
-            			
+
             			setTimeout(location.reload(),5000);
             		}
             		//console.log(status)
@@ -448,7 +448,7 @@ $speedtest.ticktock = function() {
 $speedtest.after_calcspeed = function ($seconds) {
     if (this.current == 0) return;
     if ($seconds < 3 && !this.lastword) return;
-    el('rawcpm').innerHTML = this.rawcpm;
+    //el('rawcpm').innerHTML = this.rawcpm;
     el('cpm'   ).innerHTML = this.cpm;
     el('wpm'   ).innerHTML = this.wpm;
 }
