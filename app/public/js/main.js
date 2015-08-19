@@ -237,8 +237,7 @@ function thingWithWords($arg) {
             	success: function(status){
             		console.log(status);
             		if(status == "success"){
-            			this.cpm = 0;
-            			this.wpm = 0;
+            			
             			setTimeout(location.reload(),5000);
             		}
             		//console.log(status)

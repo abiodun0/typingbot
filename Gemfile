@@ -19,3 +19,7 @@ group :development, :test do
   gem 'sinatra-flash'
   gem 'rack-flash3'
 end
+
+group :production do
+	gem 'pg'
+end
