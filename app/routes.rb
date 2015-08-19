@@ -12,11 +12,11 @@ DataMapper.setup(:default, 'postgres://gxgijptioiskir:WBTHWR4S7yUdH8OXC-zkiY6B6W
 class Server < Sinatra::Base
   use Rack::Flash
      get '/' do
-     @user = User.new("Abiodun shuaib")
+     #@user = User.new("Abiodun shuaib")
   
     #erb :index
     #"Test Data #{@user.name}"
-    haml :index
+    redirect '/login'
 
   end
 
