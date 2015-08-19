@@ -21,5 +21,13 @@ group :development, :test do
 end
 
 group :production do
-	gem 'pg'
+  gem 'datamapper'
+  gem 'dm-sqlite-adapter'
+  gem 'dm-mysql-adapter'
+  gem 'dm-postgres-adapter'
+  gem 'pry'
+  gem 'haml'
+  gem 'sinatra-flash'
+  gem 'rack-flash3'
+  gem 'pg'
 end
