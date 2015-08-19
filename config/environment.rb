@@ -18,7 +18,7 @@ Dir[APP_ROOT.join('app', 'models', '*.rb')].each { |file| require file }
 
 # configure Server settings
 class Server < Sinatra::Base
- enable :sessions
+  enable :sessions
   set :method_override, true
   set :root, APP_ROOT.to_path
   set :views, File.join(Server.root, "app", "views")

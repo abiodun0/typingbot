@@ -1,7 +1,7 @@
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #eee;
+  background-color: #fff;
 }
 h4{
   text-align:center;
@@ -39,4 +39,32 @@ h4{
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+.small-cont{
+  width:750px;
+}
+.panel-heading{
+  text-align:center;
+
+}
+#cpm,#wpm,#total,#timer{
+  background-color:white;
+  min-width:20px;
+}
+#typetest{
+  text-align:center;
+}
+.header{
+  height:40px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
 }

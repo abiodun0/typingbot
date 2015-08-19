@@ -1,1 +1,25 @@
-= "Welcome to the dashboard #{@current_user.email}, #{@current_user.user_name}"
+.container{:class => 'small-cont'}
+  .header
+    %nav
+      %ul{:class => 'nav  pull-right'}
+        %li{:role => "presentation",:class => "active"}>
+          %a{:href => "/logout",:class=>'btn btn-danger'} Logout
+  .jumbotron
+    %h3= "Welcome to your score board #{@current_user.user_name}"
+    %p.lead Your score are displayed below click on the replay button below to replay the typingbot
+    %ul{:style =>'text-align:left'}
+      %li
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Your current Total Score is
+        = @current_user.total_score
+      %li 
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Your Email Address
+        = @current_user.email
+    %p
+      %a{:class =>"btn btn-success",:href => "#",:role =>"button"} Replay
+  .panel{:class => 'panel-default'}
+    .panel-heading 
+      CPM <span id="cpm">&nbsp;0 &nbsp;</span>&nbsp;WPM&nbsp;<span id="wpm">&nbsp;0&nbsp;</span>Total Score <span id="total">&nbsp;0&nbsp;</span>Time Left<span id="timer">&nbsp;?&nbsp;</span>
+    .panel-body 
+      %p.lead{:id =>'wordstyped'} Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+  .text-input
+    %input{:type =>"email",:class => "form-control input-lg",:id => "typetest",:placeholder =>"Start Typing"}

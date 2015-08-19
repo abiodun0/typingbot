@@ -39,23 +39,23 @@ class Server < Sinatra::Base
     haml :signup
   end
   post '/signup' do
-      user_name = Player.first(:email => params[:email])
-      user_email = Player.first(:user_name => params[:user_name])
-      if !user_name.nil? || !user_email.nil?  
-        flash[:notice] = "User Email or Name already exists" 
-        redirect '/signup'
-      end
-      if(params[:password] != params[:confirm_password])
-        flash[:notice] = "Your Password do not match" 
-        redirect '/signup'
-       end
-      password_salt = BCrypt::Engine.generate_salt
-      password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
+              user_name = Player.first(:email => params[:email])
+              user_email = Player.first(:user_name => params[:user_name])
+              if !user_name.nil? || !user_email.nil?  
+                flash[:notice] = "User Email or Name already exists" 
+                redirect '/signup'
+              end
+              if(params[:password] != params[:confirm_password])
+                flash[:notice] = "Your Password do not match" 
+                redirect '/signup'
+               end
+              password_salt = BCrypt::Engine.generate_salt
+              password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
 
-       Player.create(:user_name => params[:user_name],:password => password_hash, :email => params[:email],:salt => password_salt,:CPM => 0,:WPM =>0,:total_score => 0)
-       @player = Player.all(:order => :created_at.desc)
-       #p @player
-       redirect '/dashboard'
+               Player.create(:user_name => params[:user_name],:password => password_hash, :email => params[:email],:salt => password_salt,:CPM => 0,:WPM =>0,:total_score => 0)
+              session[:user_name] = params[:user_name]
+               #p @player
+               redirect '/dashboard'
   end
 
   get '/post' do
