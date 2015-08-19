@@ -17,7 +17,7 @@
                 %th User Name
                 %th CPM
                 %th WPM
-                %th Total Scores
+                %th Times Played
                      
               %tbody>
                 - loadusers.each do |player|
@@ -25,7 +25,7 @@
                   %td= player[:user_name]
                   %td= player[:CPM]
                   %td= player[:WPM]
-                  %td= player[:total_score]
+                  %td= player[:times_played]
     
  
     %script{:src =>"/js/bootstrap.min.js"}

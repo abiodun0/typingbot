@@ -56,9 +56,30 @@ h4{
   text-align:center;
 
 }
-#cpm,#wpm,#total,#timer{
+/*#cpm,#wpm,#total,#timer{
   background-color:white;
   min-width:20px;
+}*/
+#wordstyped span {
+      display: inline-block;
+    padding: 0;
+    position: relative;
+    margin-right: .1em;
+
+}
+.block-results{
+  background-color:blue;
+  border-radius:50%;
+  height: 150px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height:150px;
+}
+.block-results p{
+  color:white;
+  text-align:center;
+  font-size:30px;
 }
 #typetest{
   text-align:center;
@@ -67,4 +88,26 @@ h4{
   height:40px;
     margin-bottom: 20px;
     border-bottom: 1px solid #e5e5e5;
+}
+.correct{
+  background-color:green;
+  color:white;
+}
+.incorrect{
+  background-color:red;
+  color:white;
+}
+.currentword{
+  background-color:green;
+  color:white;
+}
+.nextword{
+  background-color:transparent;
+  color:black;
+}
+.incorrect{
+  color: #c00;
+}
+ul li a:hover{
+ background-color:;
 }

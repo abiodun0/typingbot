@@ -8,7 +8,7 @@ class Player
   property :CPM, Integer
   property :WPM, Integer
   property :salt, Text
-  property :total_score, Integer
+  property :times_played, Integer
   property :created_at, DateTime
 
 end

@@ -4,7 +4,7 @@ require 'sinatra/flash'
 require 'data_mapper'
 require 'bcrypt'
 require 'rack-flash'
-
+require 'json'
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/typing_speed.db")
 class Server < Sinatra::Base
@@ -52,10 +52,19 @@ class Server < Sinatra::Base
               password_salt = BCrypt::Engine.generate_salt
               password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
 
-               Player.create(:user_name => params[:user_name],:password => password_hash, :email => params[:email],:salt => password_salt,:CPM => 0,:WPM =>0,:total_score => 0)
+               Player.create(:user_name => params[:user_name],:password => password_hash, :email => params[:email],:salt => password_salt,:CPM => 0,:WPM =>0,:times_played => 0)
               session[:user_name] = params[:user_name]
                #p @player
                redirect '/dashboard'
+  end
+  post '/update',:provides => :json do
+      @update_player =  Player.first(:user_name => session[:user_name])
+      @update_player.CPM = params[:cpm]
+      @update_player.WPM = params[:wpm]
+      @update_player.times_played += 1
+      @update_player.save
+      p params[:cpm]
+      return "success".to_json
   end
 
   get '/post' do

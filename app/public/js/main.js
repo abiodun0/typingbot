@@ -1,7 +1,21 @@
 $(function() {
     console.log( "ready!" );
 
-    var $sourcewords = 
+    $("#playbutton").click(function(e){
+    		$("#scoreboard").hide('slow');
+    		$("#playing").show('slow');
+    		$( "#wordstyped").click();
+
+    });
+       $("#showscore").click(function(e){
+       	$("#playing").hide('slow');
+    		$("#scoreboard").show('slow');
+    		
+    		
+
+    });
+    
+var $sourcewords = 
 'the name of very to through and just form in much is great it think you say ' +
 'that help he low was line for before on turn are cause with same as mean ' +
 'differ his move they right be boy at old one too have does this tell from ' +
@@ -39,6 +53,7 @@ $(function() {
 'perhaps six fill table east travel weight less language morning among speed ' +
 'typing mineral seven eight nine everything something standard distant paint'
 ;
+
 
 $sourcewords = $sourcewords.split(' ');
 
@@ -79,7 +94,7 @@ function time() {
 function el($id) {
     return document.getElementById($id);
 }
-console.log(time());
+//console.log(time());
 
 
 function thingWithWords($arg) {
@@ -116,12 +131,12 @@ function thingWithWords($arg) {
     };
 
     this.render = function() {
-        this.do_hook('before_render');
+        //this.do_hook('before_render');
 
         var $newhtml = '';
         for (var $i = 0; $i < this.words.length; $i++) {
             $newhtml += eval(i(
-                "<span> $.words[$i] </.span>"
+                "<span>$.words[$i]</.span>"
             ));
         }
 
@@ -129,7 +144,7 @@ function thingWithWords($arg) {
         $words_el.innerHTML = $newhtml;
 
         $('#wordstyped span').each(function () {
-            return $(this).width( $(this).width() + "px" );
+            //return $(this).width( $(this).width() + 40 + "px" );
         });
 
         this.update_display();
@@ -192,7 +207,7 @@ function thingWithWords($arg) {
     this.advance = function(given) {
         this.do_hook('before_advance');
 
-	this.given[this.current] = given;
+	       this.given[this.current] = given;
 
         var $previous = this.current;
 
@@ -206,9 +221,29 @@ function thingWithWords($arg) {
 
         if (this.lastword) {
             clearInterval(this.interval_id);
-            el('input').disabled = 1;
-            el('wordsbox').innerHTML = this.report ? this.report() : "Done!";
+            //el('input').disabled = 1;
+            //el('wordsbox').innerHTML = this.report ? this.report() : "Done!";
             this.do_hook('after_report');
+            console.log(this.cpm)
+            console.log(this.wpm)
+            console.log(this.rawcpm)
+            $.ajax({
+            	url: '/update',
+            	type: 'POST',
+            	data: {
+            		cpm: this.cpm,
+            		wpm: this.wpm,
+            	},
+            	success: function(status){
+            		console.log(status);
+            		if(status == "success"){
+            			this.cpm = 0;
+            			this.wpm = 0;
+            			setTimeout(location.reload(),5000);
+            		}
+            		//console.log(status)
+            	}
+            })
         } else {
             this.update_display($previous);
         }
@@ -226,7 +261,7 @@ function thingWithWords($arg) {
         if ($keycode == 8 && $value == "" && this.current > 0) {
             this.current--;
             $value = $input_el.value = this.given[this.current];
-            this.chars -= $value.replace(/^ +/, "").length;
+            this.chars -= $value.replace(/^ +/, " ").length;
             this.update_display();
         }
     }
@@ -269,7 +304,7 @@ function thingWithWords($arg) {
 
       if (!$value.match(/[^ ]/)) {
             // Only whitespace. Remove and ignore.
-            $input_el.value = $value.replace(/^ +/, '');
+            $input_el.value = $value.replace(/^ +/, ' ');
             return;
         }
 
@@ -293,7 +328,7 @@ function thingWithWords($arg) {
         }
         $wordandspace = new String($wordandspace[1]);  // coerce
 
-        $input_el.value = $value.replace(/^ *.+? +/, "");
+        $input_el.value = $value.replace(/^ *.+? +/, " ");
         this.chars += $wordandspace.length;
 
         var $given    = $wordandspace.match(/^[^ ]+/);
@@ -343,17 +378,17 @@ function thingWithWords($arg) {
     };
 
     this.init = function() {
-        this.do_hook('before_init');
+        //this.do_hook('before_init');
 
         this.render();
-        this.do_hook('after_init');
+        //this.do_hook('after_init');
     };
 }
 
 var $speedtest = new thingWithWords({  // I have a thing with words ;)
     words: $words,
-    //allowwrong: true,
-    //interval: 200
+    allowwrong: true,
+    interval: 200
 });
 
 $speedtest.mistakes   = new Array();  // Descriptions of mistakes
@@ -444,6 +479,11 @@ $( "#typetest" ).keydown(function(e) {
 });
 $( "#typetest" ).keyup(function(e) {
 	$speedtest.keypress(this,e);
+  
+});
+
+$( "#wordstyped" ).click(function(e) {
+	$("#typetest").focus();
   
 });
 });
