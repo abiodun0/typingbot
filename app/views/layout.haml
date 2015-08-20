@@ -14,14 +14,16 @@
           .table-responsive
             %table{:id =>"mytable",:class => "table table-bordred table-striped"}
               %thead
+                %th Ranking
                 %th User Name
                 %th CPM
                 %th WPM
                 %th Times Played
                      
               %tbody>
-                - loadusers.each do |player|
+                - loadusers.each_with_index do |player,i|
                   %tr
+                  %td= i+1
                   %td= player[:user_name]
                   %td= player[:CPM]
                   %td= player[:WPM]
