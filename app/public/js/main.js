@@ -63,7 +63,7 @@ var $words = new Array();
 
 
 
-for (var $i = 1; $i < 150; $i++)
+for (var $i = 1; $i < 250; $i++)
     $words.push($sourcewords[
         Math.floor(Math.random() * $sourcewords.length)
     ]);
