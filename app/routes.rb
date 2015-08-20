@@ -21,11 +21,12 @@ class Server < Sinatra::Base
   end
 
   get '/login' do
+    if !session[:user_name].nil? then redirect '/dashboard' end
 
     haml :login
   end
   post '/login' do
-    if !session[:user_name].nil? then redirect '/dashboard' end
+
     user = Player.first(:email => params[:email])
   if !user.nil?
     if user[:password] == BCrypt::Engine.hash_secret(params[:password], user[:salt])
