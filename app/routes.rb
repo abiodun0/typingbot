@@ -25,6 +25,7 @@ class Server < Sinatra::Base
     haml :login
   end
   post '/login' do
+    if !session[:user_name].nil? then redirect '/dashboard' end
     user = Player.first(:email => params[:email])
   if !user.nil?
     if user[:password] == BCrypt::Engine.hash_secret(params[:password], user[:salt])
@@ -37,10 +38,12 @@ class Server < Sinatra::Base
     redirect '/login'
   end
   get '/signup' do
+    if !session[:user_name].nil? then redirect '/dashboard' end
     #Player.all.destroy
     haml :signup
   end
   post '/signup' do
+
               user_name = Player.first(:email => params[:email])
               user_email = Player.first(:user_name => params[:user_name])
               if !user_name.nil? || !user_email.nil?  
