@@ -90,15 +90,13 @@ h4{
     border-bottom: 1px solid #e5e5e5;
 }
 .correct{
-  background-color:green;
-  color:white;
-}
-.incorrect{
-  background-color:red;
-  color:white;
+  color:blue;
 }
 .currentword{
-  background-color:green;
+  background-color:orange;
+
+}
+.currentword .correct{
   color:white;
 }
 .nextword{
