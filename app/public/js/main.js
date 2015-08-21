@@ -143,9 +143,9 @@ function thingWithWords($arg) {
         var $words_el = el('wordstyped');
         $words_el.innerHTML = $newhtml;
 
-        $('#wordstyped span').each(function () {
+        /*$('#wordstyped span').each(function () {
             //return $(this).width( $(this).width() + 40 + "px" );
-        });
+        });*/
 
         this.update_display();
     };
@@ -273,7 +273,7 @@ function thingWithWords($arg) {
         if ($keycode == 13) {
             if (!this.enterused) {
                 // first time
-                alert("Use space bar instead of enter. It's faster. Use the 'Restart' link to start over.");
+                alert("Use space bar instead of enter. It's faster");
             }
             this.enterused = true;
             // Enter pressed. Pretend that spacebar was pressed.
@@ -447,7 +447,7 @@ $speedtest.ticktock = function() {
 
 $speedtest.after_calcspeed = function ($seconds) {
     if (this.current == 0) return;
-    if ($seconds < 3 && !this.lastword) return;
+    if ($seconds < 2 && !this.lastword) return;
     //el('rawcpm').innerHTML = this.rawcpm;
     el('cpm'   ).innerHTML = this.cpm;
     el('wpm'   ).innerHTML = this.wpm;
@@ -455,21 +455,6 @@ $speedtest.after_calcspeed = function ($seconds) {
 console.log($speedtest)
 
 
-   /* $.post("http://stats.aoeu.eu/mqtt", {
-        "typing-speed-test.aoeu.eu": this.cpm + " CPM",
-        "tst-internal/details": JSON.stringify({
-            cpm: this.cpm,
-            rawcpm: this.rawcpm,
-            wrong: $missers,
-            words: this.current,
-            ip: "154.118.22.63",
-            keys: this.keypresses,
-            chars: this.chars,
-            cheater: this.cheater ? 1 : 0,
-            iphone: $iphone,
-            enterused: this.enterused ? 1 : 0
-        })
-    });*/
 $speedtest.init();
 
 $( "#typetest" ).keydown(function(e) {

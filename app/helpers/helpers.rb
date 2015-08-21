@@ -4,7 +4,7 @@ helpers do
     "testing if this would work"
   end
   def loadusers
-  	players = Player.all(:order => :CPM.desc)
+  	players = Player.all(:order => :CPM.desc,:times_played.gt => 0)
   	return players
   end
   def login
