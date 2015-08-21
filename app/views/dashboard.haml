@@ -24,7 +24,7 @@
             %p= @current_user.times_played
           Times Played
       %p
-        %a{:class =>"btn btn-success",:href => "#",:role =>"button",:id => 'playbutton'}= "#{@current_user.times_played > 0 ? 'Retake' : 'Play'}"
+        %a{:class =>"btn btn-success",:href => "#",:role =>"button",:id => 'playbutton'}= "#{@current_user.times_played > 0 ? 'Replay' : 'Play'}"
 
   #playing{:style=>'display:none'}
     .row{:class=>'text-center'}
