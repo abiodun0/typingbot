@@ -1,4 +1,15 @@
 $(function() {
+
+ $.ajaxSetup({ cache: true });
+  $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+    FB.init({
+      appId: '1618252628457218',
+      version: 'v2.4' // or v2.0, v2.1, v2.0
+    });     
+    $('#fbloginbutton,#feedbutton').removeAttr('disabled');
+    //FB.getLoginStatus(updateStatusCallback);
+  });
+
     console.log( "ready!" );
 
     $("#playbutton").click(function(e){
@@ -470,5 +481,22 @@ $( "#wordstyped" ).click(function(e) {
 	$("#typetest").focus();
   
 });
+
+$("#fbsharebutton").click(function(e){
+    var name = $("#currentuser").text();
+    var score = $("#cwpm").text();
+    e.preventDefault();
+    console.log($("#cwpm").text());
+    FB.ui({
+  method: 'feed',
+  name: 'Type Speed App',
+  display: 'popup',
+  link: 'https://typespeed.herokuapp.com/',
+  picture: 'https://typespeed.herokuapp.com/img/t-logo.png',
+  caption: name + ' just Used the typespeed app and scored ' + score + ' Words Per Minute',
+}, function(response){
+
+});
+})
 });
 

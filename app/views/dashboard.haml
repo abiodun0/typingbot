@@ -7,17 +7,17 @@
           %a{:href => "/logout",:class=>'btn btn-danger'} Logout
   #scoreboard
     .jumbotron
-      %h3= "Welcome to your TypeSpeed score board #{@current_user.user_name}"
+      %h3= "Welcome to your TypeSpeed score board <span id='currentuser'>#{@current_user.user_name}</span>"
       
       .row{:class=>'text-center'}
         %p.lead Your Current Scores
         .col-sm-4
           .block-results
-            %p= @current_user.CPM
+            %p{:id =>'ccpm'}= @current_user.CPM
           CPM<br>(Characters Per Minute)
         .col-sm-4
           .block-results{:style=>'background-color:green'}
-            %p= @current_user.WPM
+            %p{:id =>'cwpm'}= @current_user.WPM
           WPM<br> (Words Per Minute)
         .col-sm-4
           .block-results{:style => 'background-color:orange'}
@@ -25,6 +25,8 @@
           Times Played
       %p
         %a{:class =>"btn btn-success",:href => "#",:role =>"button",:id => 'playbutton'}= "#{@current_user.times_played > 0 ? 'Replay' : 'Play'}"
+        - if @current_user.times_played > 0
+          %a{:class =>"btn btn-primary",:href =>"#",:id => "fbsharebutton"} Share Your Scores On Facebook 
 
   #playing{:style=>'display:none'}
     .row{:class=>'text-center'}
