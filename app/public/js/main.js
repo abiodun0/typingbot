@@ -493,6 +493,7 @@ $("#fbsharebutton").click(function(e){
   name: 'Type Speed App',
   display: 'popup',
   link: 'https://typespeed.herokuapp.com/',
+  description: 'Simple app designed for boot camp to calculate your typing speed',
   picture: 'https://typespeed.herokuapp.com/img/t-logo.png',
   caption: name + ' just Used the typespeed app and scored ' + score + ' Words Per Minute',
 }, function(response){
