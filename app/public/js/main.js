@@ -484,6 +484,7 @@ $( "#wordstyped" ).click(function(e) {
 
 $("#fbsharebutton").click(function(e){
     var name = $("#currentuser").text();
+    console.log(name);
     var score = $("#cwpm").text();
     e.preventDefault();
     console.log($("#cwpm").text());
