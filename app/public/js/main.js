@@ -490,7 +490,7 @@ $("#fbsharebutton").click(function(e){
     console.log($("#cwpm").text());
     FB.ui({
   method: 'feed',
-  name: 'Type Speed App',
+  name: 'I scored ' + score + ' Words Per Minute',
   display: 'popup',
   link: 'https://typespeed.herokuapp.com/',
   caption: 'Simple app designed for boot camp to calculate your typing speed',
